@@ -9,3 +9,43 @@ let cards;
 let interval;
 let firstCard = false;
 let secondCard = false;
+
+const items = [
+    { name: "bee", image: "bee.png" },
+    { name: "crocodile", image: "crocodile.png" },
+    { name: "macaw", image: "macaw.png" },
+    { name: "gorilla", image: "gorilla.png" },
+    { name: "tiger", image: "tiger.png" },
+    { name: "monkey", image: "monkey.png" },
+    { name: "chameleon", image: "chameleon.png" },
+    { name: "piranha", image: "piranha.png" },
+    { name: "anaconda", image: "anaconda.png" },
+    { name: "sloth", image: "sloth.png" },
+    { name: "cockatoo", image: "cockatoo.png" },
+    { name: "toucan", image: "toucan.png" },
+  ];
+
+  
+let seconds = 0,
+minutes = 0;
+
+let movesCount = 0,
+winCount = 0;
+
+const timeGenerator = () => {
+seconds += 1;
+
+if (seconds >= 60) {
+  minutes += 1;
+  seconds = 0;
+}
+
+let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+};
+
+const movesCounter = () => {
+movesCount += 1;
+moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+};
