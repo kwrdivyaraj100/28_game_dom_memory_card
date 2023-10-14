@@ -62,3 +62,18 @@ button {
     grid-template-columns: repeat(4, auto);
     grid-gap: 20px;
 }
+
+.board-container.flipped .board {
+    transform: rotateY(180deg) rotateZ(50deg);
+  }
+  
+  .board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+  }
+  
+  .card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }

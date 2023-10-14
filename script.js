@@ -113,4 +113,18 @@ const flipCard = card => {
             flipBackCards()
         }, 1000)
     }
+    if (!document.querySelectorAll('.card:not(.flipped)').length) {
+        setTimeout(() => {
+            selectors.boardContainer.classList.add('flipped')
+            selectors.win.innerHTML = `
+                <span class="win-text">
+                    You won!<br />
+                    with <span class="highlight">${state.totalFlips}</span> moves<br />
+                    under <span class="highlight">${state.totalTime}</span> seconds
+                </span>
+            `
+
+            clearInterval(state.loop)
+        }, 1000)
+    }
 }
