@@ -35,7 +35,7 @@ const pickRandom = (array, items) => {
 
     for (let index = 0; index < items; index++) {
         const randomIndex = Math.floor(Math.random() * clonedArray.length)
-        
+
         randomPicks.push(clonedArray[randomIndex])
         clonedArray.splice(randomIndex, 1)
     }
@@ -50,8 +50,8 @@ const generateGame = () => {
         throw new Error("The dimension of the board must be an even number.")
     }
 
-    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍' ] //windows key + . for emoji
-    const picks = pickRandom(emojis, (dimensions * dimensions) / 2) 
+    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍'] //windows key + . for emoji
+    const picks = pickRandom(emojis, (dimensions * dimensions) / 2)
     const items = shuffle([...picks, ...picks])
     const cards = `
         <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
@@ -63,7 +63,7 @@ const generateGame = () => {
             `).join('')}
        </div>
     `
-    
+
     const parser = new DOMParser().parseFromString(cards, 'text/html')
 
     selectors.board.replaceWith(parser.querySelector('.board'))
@@ -79,4 +79,12 @@ const startGame = () => {
         selectors.moves.innerText = `${state.totalFlips} moves`
         selectors.timer.innerText = `time: ${state.totalTime} sec`
     }, 1000)
+}
+
+const flipBackCards = () => {
+    document.querySelectorAll('.card:not(.matched)').forEach(card => {
+        card.classList.remove('flipped')
+    })
+
+    state.flippedCards = 0
 }
